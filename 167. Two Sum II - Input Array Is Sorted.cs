@@ -1,24 +1,23 @@
 public class Solution {
-    public int[] TwoSum(int[] numbers, int target) 
+    public int[] ProductExceptSelf(int[] nums) 
     {
-        int [] output = new int[2];
-        int j = 0;
-        for (int i = 0; i < numbers.Length; i++)
+        int[] output = new int[nums.Length];
+        int temp = 1;
+        for (int i = 0; i < nums.Length; i++)
         {
-            j = i;
-            while (j < numbers.Length)
-            {
-                if (numbers[i] + numbers[j] == target && i != j)
-                {
-                    output [0] = i;
-                    output[1] = j;
-                }
-                j++;
-            }
+            output[i] = temp * nums[i];
+            temp *= nums[i];
         }
 
+        temp = 1;
+
+        for (int i = nums.Length - 1; i > 0; i--)
+        {
+            output[i] = temp * nums[i];
+            temp *= nums[i];
+        }
+        
         return output;
     }
-
 
 }
